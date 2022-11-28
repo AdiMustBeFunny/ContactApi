@@ -1,6 +1,6 @@
 ## Simple application where you can add new contacts and modify them
 
-![ContactApi](assets/1.png)
+(assets/1.png)
 
 ## Setup
 
