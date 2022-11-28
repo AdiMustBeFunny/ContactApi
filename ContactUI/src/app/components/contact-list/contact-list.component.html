@@ -1,12 +1,12 @@
 <div>
-  <button *ngIf="authService.isUserAuthenticated()" (click)="logout()">Logout</button>
-  <a *ngIf="!authService.isUserAuthenticated()" routerLink="login">Log in</a>
+  <button class="btn btn-secondary" *ngIf="authService.isUserAuthenticated()" (click)="logout()">Logout</button>
+  <a class="btn btn-secondary" *ngIf="!authService.isUserAuthenticated()" routerLink="login">Log in</a>
 </div>
 
 <h2>Lista kontaktów</h2>
 
-<a *ngIf="authService.isUserAuthenticated()" routerLink="/contact">Dodaj nowy kontakt</a>
-<table *ngIf="contacts">
+<a class="btn btn-secondary" *ngIf="authService.isUserAuthenticated()" routerLink="/contact">Dodaj nowy kontakt</a>
+<table *ngIf="contacts" class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,9 +21,9 @@
       <td>
         <!--<button *ngIf="contact.editable">Edycja</button>
         <button *ngIf="contact.editable">Usuń</button>-->
-        <a [routerLink]="['/contact',contact.id,false]">Podgląd</a>
-        <a [routerLink]="['/contact',contact.id,true]" *ngIf="authService.isUserAuthenticated()">Edycja</a>
-        <button (click)="removeContact(contact.id)" *ngIf="authService.isUserAuthenticated()">Usuń</button>
+        <a class="btn btn-secondary" [routerLink]="['/contact',contact.id,false]">Podgląd</a>
+        <a class="btn btn-warning" [routerLink]="['/contact',contact.id,true]" *ngIf="authService.isUserAuthenticated()">Edycja</a>
+        <button class="btn btn-danger" (click)="removeContact(contact.id)" *ngIf="authService.isUserAuthenticated()">Usuń</button>
       </td>
     </tr>
   </tbody>
