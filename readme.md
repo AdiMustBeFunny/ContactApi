@@ -6,7 +6,7 @@
 
 * Open project in Microsoft Visual Studio 2022 
 * In ContactApi project open appsettings.json
-    * Fill in connection to the database in DefaultConnection
+    * Fill in connection to your database in DefaultConnection (Microsoft SQL Server)
     * Fill in secret for JWT (some random characters like: asdanviuhxcasdasdasdasdasdasdasdv - it has to be at least 128 bit long)
 * Open Package Manager Console
     * Set Default project to Database
@@ -35,7 +35,7 @@
 * Utility - Classes used in Logic and ContactApi projects
 * Logic - Validations, operations on database take place here
 
-Main flow of the application is to 
+# Main flow of the application is to 
 * Receive a model at given endpoint
 * Create a command / query and send it via mediatr
 * mediatr is configured to pass data to specific command / query handlers inside Logic project
