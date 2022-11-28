@@ -7,7 +7,10 @@
 * Open project in Microsoft Visual Studio 2022 
 * In ContactApi project open appsettings.json
     * Fill in connection to the database in DefaultConnection
-    * Fill in secret for JWT (some random characters like: asdanviuhxcv)
+    * Fill in secret for JWT (some random characters like: asdanviuhxcasdasdasdasdasdasdasdv - it has to be at least 128 bit long)
+* Open Package Manager Console
+    * Set Default project to Database
+    * Run update-database
 * Set multiple startup projects: 
     * 1st - ContactApi 
     * 2nd - ContactUI
