@@ -8,6 +8,7 @@
 * In ContactApi project open appsettings.json
     * Fill in connection to your database in DefaultConnection (Microsoft SQL Server)
     * Fill in secret for JWT (some random characters like: asdanviuhxcasdasdasdasdasdasdasdv - it has to be at least 128 bit long)
+* Angular requires nodejs so you should have it on your computer
 * Open Package Manager Console
     * Set Default project to Database
     * Run update-database
