@@ -40,6 +40,16 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: "CorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var logicAssembly = Assembly.Load("Logic");
 builder.Services.AddMediatR(logicAssembly);
 
@@ -58,6 +68,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

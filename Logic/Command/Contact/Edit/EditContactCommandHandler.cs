@@ -4,6 +4,7 @@ using Logic.Validators.Contact;
 using Logic.Validators.Contact.Edit;
 using MediatR;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,13 @@ namespace Logic.Command.Contact.Edit
     {
         private readonly ApplicationDbContext _context;
         private readonly IMediator _mediator;
+        private readonly IPasswordHasher<IdentityUser> _passwordHasher;
 
-        public EditContactCommandHandler(ApplicationDbContext context, IMediator mediator)
+        public EditContactCommandHandler(ApplicationDbContext context, IMediator mediator, IPasswordHasher<IdentityUser> passwordHasher)
         {
             _context = context;
             _mediator = mediator;
+            _passwordHasher = passwordHasher;
         }
 
         public async Task<Request<EditContactCommandResult>> Handle(EditContactCommand request, CancellationToken cancellationToken)
@@ -48,14 +51,7 @@ namespace Logic.Command.Contact.Edit
                 return Request<EditContactCommandResult>.Failure(validateResult.ErrorMessage,validateResult.PropertyErrors);
             }
 
-            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-
-            string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: request.Password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
+            string hashedPassword = _passwordHasher.HashPassword(new IdentityUser(), request.Password);
 
             var contact = await _context.Contacts.FirstAsync(c => c.Id == request.Id);
 

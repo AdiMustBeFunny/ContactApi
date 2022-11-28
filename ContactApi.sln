@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApi", "ContactApi\ContactApi.csproj", "{3495D859-91CD-44CA-8E2F-DFA13FA6E1AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactApi", "ContactApi\ContactApi.csproj", "{3495D859-91CD-44CA-8E2F-DFA13FA6E1AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{B8B3DA00-31F0-4D7A-9172-FB5500DD2C70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{B8B3DA00-31F0-4D7A-9172-FB5500DD2C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{74F64F72-A696-47B4-A327-84EA49204265}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{74F64F72-A696-47B4-A327-84EA49204265}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{C5DB0D00-EF9B-44AC-8272-23FA98239604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{C5DB0D00-EF9B-44AC-8272-23FA98239604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{0992B72A-3FAB-472A-A181-5D7E1427824D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{0992B72A-3FAB-472A-A181-5D7E1427824D}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ContactUI", "ContactUI\ContactUI.esproj", "{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{0992B72A-3FAB-472A-A181-5D7E1427824D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0992B72A-3FAB-472A-A181-5D7E1427824D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0992B72A-3FAB-472A-A181-5D7E1427824D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FCC44A-D5D9-4A54-906A-1ED1D08DD1E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,58 @@
+<form #contactForm="ngForm" (ngSubmit)="submit()">
+  Name:
+  <input type="text" [(ngModel)]="contact.name" name="name" [readonly]="editable=='false'" (input)="inputChanged('name')">
+  <div *ngIf="errors.name">{{errors.name}}</div>
+  <br />
+
+  Surname:
+  <input type="text" [(ngModel)]="contact.surname" name="surname" [readonly]="editable=='false'" (input)="inputChanged('surname')">
+  <div *ngIf="errors.surname">{{errors.surname}}</div>
+  <br />
+
+  Password:
+  <input type="text" [(ngModel)]="contact.password" name="password" type="password" [readonly]="editable=='false'" (input)="inputChanged('password')" >
+  <div *ngIf="errors.password">{{errors.password}}</div>
+  <br />
+
+  Email:
+  <input type="text" [(ngModel)]="contact.email" name="email" [readonly]="editable=='false'" (input)="inputChanged('email')">
+  <div *ngIf="errors.email">{{errors.email}}</div>
+  <br />
+
+  Phone:
+  <input type="text" [(ngModel)]="contact.phoneNumber" name="phoneNumber" [readonly]="editable=='false'" (input)="inputChanged('phoneNumber')">
+  <div *ngIf="errors.phoneNumber">{{errors.phoneNumber}}</div>
+  <br />
+
+  BirthDate
+  <input type="text" [(ngModel)]="contact.birthDate" name="birthDate" type="date" [readonly]="editable=='false'" (input)="inputChanged('birthDate')">
+  <div *ngIf="errors.birthDate">{{errors.birthDate}}</div>
+  <br />
+
+  <div>
+    Category
+    <select [(ngModel)]="contact.categoryId" name="categoryId" (change)="changeSubcategories()" [disabled]="editable=='false'">
+      <option *ngFor="let category of categoryRootSelectItems"
+              [value]="category.value">
+        {{category.text}}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="errors.categoryId">{{errors.categoryId}}</div>
+
+  <div *ngIf="!hideSubcategories()">
+    SubCategory
+    <select [(ngModel)]="selectedSubcategoryId" name="categoryId" [disabled]="editable=='false'">
+      <option *ngFor="let category of categoryChildSelectItems" [value]="category.value">{{category.text}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="contact.categoryId == customCategoryId">
+    Custom Category:
+    <input type="text" [(ngModel)]="contact.categoryText" name="contact.categoryText" [readonly]="editable=='false'" (input)="inputChanged('categoryText')">
+    <div *ngIf="errors.categoryText">{{errors.categoryText}}</div>
+
+  </div>
+
+  <button *ngIf="editable == 'true'" type="submit">Submit</button>
+</form>

@@ -6,6 +6,7 @@ using Logic.Command.Contact.Remove;
 using Logic.Query.Contact.GetAll;
 using Logic.Query.Contact.GetById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace ContactApi.Controllers
         {
             _mediator = mediator;
         }
-
+        [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create(CreateContactModel model)
         {
@@ -41,7 +42,7 @@ namespace ContactApi.Controllers
 
             return BuildResponse(result);
         }
-
+        [Authorize]
         [HttpPost("edit")]
         public async Task<IActionResult> Edit(EditContactModel model)
         {
@@ -62,7 +63,7 @@ namespace ContactApi.Controllers
 
             return BuildResponse(result);
         }
-
+        [Authorize]
         [HttpPost("remove")]
         public async Task<IActionResult> Remove(string id)
         {

@@ -3,6 +3,7 @@ using Logic.Validators.Contact;
 using Logic.Validators.Contact.Create;
 using MediatR;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using Model.Providers;
@@ -21,11 +22,13 @@ namespace Logic.Command.Contact.Create
     {
         private readonly ApplicationDbContext _context;
         private readonly IMediator _mediator;
+        private readonly IPasswordHasher<IdentityUser> _passwordHasher;
 
-        public CreateContactCommandHandler(ApplicationDbContext context, IMediator mediator)
+        public CreateContactCommandHandler(ApplicationDbContext context, IMediator mediator, IPasswordHasher<IdentityUser> passwordHasher)
         {
             _context = context;
             _mediator = mediator;
+            this._passwordHasher = passwordHasher;
         }
 
         public async Task<Request<CreateContactCommandResult>> Handle(CreateContactCommand request, CancellationToken cancellationToken)
@@ -49,15 +52,7 @@ namespace Logic.Command.Contact.Create
                 return Request<CreateContactCommandResult>.Failure(validateResult.PropertyErrors);
             }
 
-            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8); 
-            Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
-
-            string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: request.Password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
+            string hashedPassword = _passwordHasher.HashPassword(new IdentityUser(), request.Password);
 
             var contact = new Model.Contact()
             {
