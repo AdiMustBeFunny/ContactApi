@@ -13,7 +13,8 @@ namespace ContactApi.Controllers.Base
             }
             return StatusCode(400, new
             {
-                Errors = request.Errors
+                ErrorMessage = request.ErrorMessage,
+                FieldErrors = request.PropertyErrors
             });
         }
     }
