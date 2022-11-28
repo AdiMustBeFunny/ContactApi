@@ -1,7 +1,6 @@
 ## Simple application where you can add new contacts and modify them
 
-(assets/1.png)
-
+![Alt text](/assets/1.png?raw=true "Application image")
 ## Setup
 
 * Open project in Microsoft Visual Studio 2022 
